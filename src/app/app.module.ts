@@ -18,8 +18,8 @@ import { ErrorHandlerService } from './shared/services/error-handler.service';
     HomeComponent,
     MenuComponent,
     NotFoundComponent,
-    InternalServerComponent
-  ],
+    InternalServerComponent,
+    ],
   imports: [
     BrowserModule,
     HttpClientModule,
