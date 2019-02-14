@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <form [formGroup]="studentForm" autocomplete="off" novalidate (ngSubmit)="createStudent(studentForm.value)">
+        <div class="form-horizontal well">
+
+            <div class="form-group">
+                <label for="firstName" class="control-label col-md-2">First name of the student: </label>
+                <div class="col-md-5">
+                    <input type="text" formControlName="firstName" id="firstName" class="form-control" />
+                </div>
+                <div class="col-md-5">
+                    <em *ngIf="validateControl('firstName') && hasError('firstName', 'required')">First name is required</em>
+                    <em *ngIf="validateControl('firstName') && hasError('firstName', 'maxlength')">Maximum allowed length is 60 characters.</em>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="middleName" class="control-label col-md-2">Middle name of the student: </label>
+                <div class="col-md-5">
+                    <input type="text" formControlName="middleName" id="middleName" class="form-control" />
+                </div>
+                <div class="col-md-5">
+                    <em *ngIf="validateControl('middleName') && hasError('middleName', 'required')">Middle name is required</em>
+                    <em *ngIf="validateControl('middleName') && hasError('middleName', 'maxlength')">Maximum allowed length is 60 characters.</em>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName" class="control-label col-md-2">Last name of the student: </label>
+                <div class="col-md-5">
+                    <input type="text" formControlName="lastName" id="lastName" class="form-control" />
+                </div>
+                <div class="col-md-5">
+                    <em *ngIf="validateControl('lastName') && hasError('lastName', 'required')">Middle name is required</em>
+                    <em *ngIf="validateControl('lastName') && hasError('lastName', 'maxlength')">Maximum allowed length is 60 characters.</em>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="birthDate" class="control-label col-md-2">Date of birth: </label>
+                <div class="col-md-5">
+                    <input type="text" formControlName="birthDate" id="birthDate" class="form-control" appDatepicker (change)="executeDatePicker($event)" readonly/>
+                </div>
+                <div class="col-md-5">
+                    <em *ngIf="validateControl('birthDate') && hasError('birthDate', 'required')">Date of birth is required</em>
+                </div>
+            </div>
+
+            <br><br>
+
+            <div class="form-group">
+                <div class="col-md-offset-5 col-md-1">
+                    <button type="submit" class="btn btn-info" [disabled]="!ownerForm.valid">Save</button>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-danger" (click)="redirectToOwnerList()">Cancel</button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <app-success-modal [modalHeaderText]="'Success message'" [modalBodyText]="'Action completed successfully'" [okButtonText]="'OK'" (redirectOnOK)="redirectToOwnerList()"></app-success-modal>
+
+    <app-error-modal [modalHeaderText]="'Error message'" [modalBodyText]="errorMessage" [okButtonText]="'OK'"></app-error-modal>
+
+</div>
