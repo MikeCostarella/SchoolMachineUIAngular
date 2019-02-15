@@ -19,7 +19,7 @@ export class SchoolCreateComponent implements OnInit {
 
   ngOnInit() {
     this.schoolForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.maxLength(60)])
+      name: new FormControl('', [Validators.required, Validators.maxLength(100)])
     });
   }
 
@@ -37,11 +37,7 @@ export class SchoolCreateComponent implements OnInit {
     return false;
   }
 
-  public executeDatePicker(event) {
-    this.schoolForm.patchValue({ birthDate: event });
-  }
-
-  public createOwner(schoolFormValue) {
+  public createSchool(schoolFormValue) {
     if (this.schoolForm.valid) {
       this.executeSchoolCreation(schoolFormValue);
     }
@@ -64,7 +60,7 @@ export class SchoolCreateComponent implements OnInit {
     );
   }
 
-  public redirectToOwnerList() {
+  public redirectToSchoolList() {
     this.router.navigate(['/school/list']);
   }
 

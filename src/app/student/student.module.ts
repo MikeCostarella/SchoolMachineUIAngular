@@ -14,6 +14,7 @@ import { StudentCreateComponent } from './student-create/student-create.componen
     SharedModule,
     ReactiveFormsModule,
     RouterModule.forChild([
+      { path: 'create', component: StudentCreateComponent },
       { path: 'list', component: StudentListComponent },
       { path: 'details/:id', component: StudentDetailsComponent }
     ])
