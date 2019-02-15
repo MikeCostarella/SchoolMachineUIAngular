@@ -18,7 +18,7 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let school of schools">
-                        <td>{{school.Name}}</td>
+                        <td>{{school.name}}</td>
                         <td><button type="button" id="details" class="btn btn-default" (click)="getSchoolDetails(school.id)">Details</button></td>
                         <td><button type="button" id="update" class="btn btn-success">Update</button></td>
                         <td><button type="button" id="delete" class="btn btn-danger">Delete</button></td>
