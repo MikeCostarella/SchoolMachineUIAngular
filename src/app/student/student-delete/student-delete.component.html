@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10 well">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="firstName" class="control-label">Student first name:</label>
+                </div>
+                <div class="col-md-7">
+                    <span name="firstName">
+                    {{student?.firstName}}
+                  </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="middleName" class="control-label">Student middle name:</label>
+                </div>
+                <div class="col-md-7">
+                    <span name="middleName">
+                      {{student?.middleName}}
+                    </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="lastName" class="control-label">Student last name:</label>
+                </div>
+                <div class="col-md-7">
+                    <span name="lastName">
+                      {{student?.lastName}}
+                    </span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="birthDate" class="control-label">Date of birth:</label>
+                </div>
+                <div class="col-md-7">
+                    <span name="birthDate">
+                   {{student?.birthDate | date: 'MM/dd/yyyy'}}
+                  </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-offset-8 col-md-1">
+            <button type="submit" class="btn btn-info" (click)="deleteStudent()">Delete</button>
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-danger" (click)="redirectToStudentList()">Cancel</button>
+        </div>
+    </div>
+    <app-success-modal [modalHeaderText]="'Success message'" [modalBodyText]="'Action completed successfully'" [okButtonText]="'OK'" (redirectOnOK)="redirectToStudentList()"></app-success-modal>
+    <app-error-modal [modalHeaderText]="'Error message'" [modalBodyText]="errorMessage" [okButtonText]="'OK'"></app-error-modal>
+</div>

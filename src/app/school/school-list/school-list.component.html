@@ -21,7 +21,7 @@
                         <td>{{school.name}}</td>
                         <td><button type="button" id="details" class="btn btn-default" (click)="getSchoolDetails(school.id)">Details</button></td>
                         <td><button type="button" id="update" class="btn btn-success" (click)="redirectToUpdatePage(school.id)">Update</button></td>
-                        <td><button type="button" id="delete" class="btn btn-danger">Delete</button></td>
+                        <td><button type="button" id="delete" class="btn btn-danger" (click)="redirectToDeletePage(school.id)">Delete</button></td>
                     </tr>
                 </tbody>
             </table>

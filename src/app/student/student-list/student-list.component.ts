@@ -43,4 +43,9 @@ export class StudentListComponent implements OnInit {
     this.router.navigate([updateUrl]);
   }
 
+  public redirectToDeletePage(id: string) {
+    const deleteUrl = `/student/delete/${id}`;
+    this.router.navigate([deleteUrl]);
+  }
+
 }

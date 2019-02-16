@@ -43,4 +43,9 @@ export class SchoolListComponent implements OnInit {
     this.router.navigate([updateUrl]);
   }
 
+  public redirectToDeletePage(id: string) {
+    const deleteUrl = `/school/delete/${id}`;
+    this.router.navigate([deleteUrl]);
+  }
+
 }
