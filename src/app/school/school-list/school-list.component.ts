@@ -38,4 +38,9 @@ export class SchoolListComponent implements OnInit {
     this.router.navigate([detailsUrl]);
   }
 
+  public redirectToUpdatePage(id: string) {
+    const updateUrl = `/school/update/${id}`;
+    this.router.navigate([updateUrl]);
+  }
+
 }

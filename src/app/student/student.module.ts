@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StudentListComponent } from './student-list/student-list.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { StudentCreateComponent } from './student-create/student-create.component';
+import { StudentUpdateComponent } from './student-update/student-update.component';
 
 @NgModule({
   imports: [
@@ -15,10 +16,11 @@ import { StudentCreateComponent } from './student-create/student-create.componen
     ReactiveFormsModule,
     RouterModule.forChild([
       { path: 'create', component: StudentCreateComponent },
+      { path: 'details/:id', component: StudentDetailsComponent },
       { path: 'list', component: StudentListComponent },
-      { path: 'details/:id', component: StudentDetailsComponent }
+      { path: 'update/:id', component: StudentUpdateComponent }
     ])
  ],
-  declarations: [StudentListComponent, StudentDetailsComponent, StudentCreateComponent]
+  declarations: [StudentListComponent, StudentDetailsComponent, StudentCreateComponent, StudentUpdateComponent]
 })
 export class StudentModule { }
