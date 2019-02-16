@@ -9,7 +9,8 @@ import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-student-update',
   templateUrl: './student-update.component.html',
-  styleUrls: ['./student-update.component.css']
+  styleUrls: ['./student-update.component.css'],
+  providers: [DatePipe]
 })
 export class StudentUpdateComponent implements OnInit {
   public errorMessage = '';
