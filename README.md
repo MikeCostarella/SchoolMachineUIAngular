@@ -1,6 +1,6 @@
-# SchoolMachineClient
+# SchoolMachineUIAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
+    This is a small Angular 7 application designed to act as a client to the SchoolMachine Web Api project, stored in the repository of the same name.  It currently is in development stage but exercises many of the features of the Angular development framework.
 
 ## Development server
 
