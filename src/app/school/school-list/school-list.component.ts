@@ -33,9 +33,9 @@ export class SchoolListComponent implements OnInit {
     });
   }
 
-  public getSchoolDetails(id: string) {
-    const detailsUrl = `/school/details/${id}`;
-    this.router.navigate([detailsUrl]);
+  public getSchoolStudents(id: string) {
+    const schoolStudentsUrl = `/school/details/${id}`;
+    this.router.navigate([schoolStudentsUrl]);
   }
 
   public redirectToUpdatePage(id: string) {

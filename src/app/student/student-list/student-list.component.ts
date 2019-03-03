@@ -33,7 +33,7 @@ export class StudentListComponent implements OnInit {
     });
   }
 
-  public getStudentDetails(id: string) {
+  public getStudentSchools(id: string) {
     const detailsUrl = `/student/details/${id}`;
     this.router.navigate([detailsUrl]);
   }

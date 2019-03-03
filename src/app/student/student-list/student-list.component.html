@@ -14,9 +14,9 @@
                         <th>Middle Name</th>
                         <th>Last Name</th>
                         <th>Date of birth</th>
-                        <th>Details</th>
                         <th>Update</th>
                         <th>Delete</th>
+                        <th>Schools</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,9 +25,9 @@
                         <td>{{student.middleName}}</td>
                         <td>{{student.lastName}}</td>
                         <td>{{student.birthDate | date: 'dd/MM/yyyy'}}</td>
-                        <td><button type="button" id="details" class="btn btn-default" (click)="getStudentDetails(student.id)">Details</button></td>
                         <td><button type="button" id="update" class="btn btn-success" (click)="redirectToUpdatePage(student.id)">Update</button></td>
                         <td><button type="button" id="delete" class="btn btn-danger" (click)="redirectToDeletePage(student.id)">Delete</button></td>
+                        <td><button type="button" id="schools" class="btn btn-default" (click)="getStudentSchools(student.id)">Schools</button></td>
                     </tr>
                 </tbody>
             </table>

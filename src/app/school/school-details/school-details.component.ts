@@ -24,7 +24,7 @@ export class SchoolDetailsComponent implements OnInit {
 
   getSchoolDetails() {
     const id: string = this.activeRoute.snapshot.params.id;
-    const apiUrl = `api/school/${id}/schoolstudent`;
+    const apiUrl = `api/school/${id}`;
 
     this.repository.getData(apiUrl)
     .subscribe(res => {
