@@ -12,6 +12,8 @@ import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 import { InternalServerComponent } from './error-pages/internal-server/internal-server.component';
 import { ErrorHandlerService } from './shared/services/error-handler.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DataTableComponent } from './data-table/data-table.component';
+import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MenuComponent,
     NotFoundComponent,
     InternalServerComponent,
+    DataTableComponent,
     ],
   imports: [
     BrowserModule,
@@ -33,7 +36,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: '**', redirectTo: '/404', pathMatch: 'full'}
     ]),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
  ],
   providers: [
     EnvironmentUrlService,

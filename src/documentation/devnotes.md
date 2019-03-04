@@ -19,5 +19,14 @@ Installing Angular Material 7 to the project
 * import angular material components
   * https://material.angular.io/components/categories
 
-* ng generate @angular/material:material:material-table --name=data-table
+### Angular Material Schematics
+* https://material.angular.io/guide/schematics
+
+* Address form
+  * ng generate @angular/material:address-form address-form
+
+* Table Schematic (I install this one already)
+  * ng generate @angular/material:material:table data-table
+
+
 
