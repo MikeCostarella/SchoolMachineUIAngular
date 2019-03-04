@@ -27,28 +27,23 @@ export class SchoolDetailsComponent implements OnInit {
   getSchoolDetails() {
     const id: string = this.activeRoute.snapshot.params.id;
     const schoolApiUrl = `api/school/${id}`;
-    const studentsApiUrl = `api/school/GetStudentsBySchoolId/${id}`;
+    const studentsApiUrl = `api/school/GetStudentsBySchoolId?schoolId=${id}`;
 
     // Get the school
-    console.log(id);
     this.repository.getData(schoolApiUrl)
     .subscribe(res => {
-      console.log(res);
       this.school = res as School;
-      console.log(studentsApiUrl);
       this.repository.getData(studentsApiUrl)
       .subscribe(studentsResponse => {
         console.log(studentsResponse);
         this.students = studentsResponse as Student[];
       },
       (error1) => {
-        console.log(error1);
         this.errorHandler.handleError(error1);
         this.errorMessage = this.errorHandler.errorMessage;
       });
     },
     (error2) => {
-      console.log(error2);
       this.errorHandler.handleError(error2);
       this.errorMessage = this.errorHandler.errorMessage;
     });
