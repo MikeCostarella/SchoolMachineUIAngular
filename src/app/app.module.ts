@@ -11,6 +11,7 @@ import { MenuComponent } from './menu/menu.component';
 import { NotFoundComponent } from './error-pages/not-found/not-found.component';
 import { InternalServerComponent } from './error-pages/internal-server/internal-server.component';
 import { ErrorHandlerService } from './shared/services/error-handler.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ErrorHandlerService } from './shared/services/error-handler.service';
       { path: '500', component: InternalServerComponent },
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: '**', redirectTo: '/404', pathMatch: 'full'}
-    ])
+    ]),
+    BrowserAnimationsModule
  ],
   providers: [
     EnvironmentUrlService,
