@@ -5,6 +5,7 @@ import { ErrorHandlerService } from './../../shared/services/error-handler.servi
 import { RepositoryService } from './../../shared/services/repository.service';
 
 import { School } from './../../_interfaces/school.model';
+import { Student } from './../../_interfaces/student.model';
 
 @Component({
   selector: 'app-school-details',
@@ -13,6 +14,7 @@ import { School } from './../../_interfaces/school.model';
 })
 export class SchoolDetailsComponent implements OnInit {
   public school: School;
+  public students: Student[];
   public errorMessage = '';
 
   constructor(private repository: RepositoryService, private router: Router,
@@ -24,14 +26,30 @@ export class SchoolDetailsComponent implements OnInit {
 
   getSchoolDetails() {
     const id: string = this.activeRoute.snapshot.params.id;
-    const apiUrl = `api/school/${id}`;
+    const schoolApiUrl = `api/school/${id}`;
+    const studentsApiUrl = `api/school/GetStudentsBySchoolId/${id}`;
 
-    this.repository.getData(apiUrl)
+    // Get the school
+    console.log(id);
+    this.repository.getData(schoolApiUrl)
     .subscribe(res => {
+      console.log(res);
       this.school = res as School;
+      console.log(studentsApiUrl);
+      this.repository.getData(studentsApiUrl)
+      .subscribe(studentsResponse => {
+        console.log(studentsResponse);
+        this.students = studentsResponse as Student[];
+      },
+      (error1) => {
+        console.log(error1);
+        this.errorHandler.handleError(error1);
+        this.errorMessage = this.errorHandler.errorMessage;
+      });
     },
-    (error) => {
-      this.errorHandler.handleError(error);
+    (error2) => {
+      console.log(error2);
+      this.errorHandler.handleError(error2);
       this.errorMessage = this.errorHandler.errorMessage;
     });
   }

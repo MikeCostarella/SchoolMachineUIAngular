@@ -8,3 +8,29 @@
         </div>
     </div>
 </div>
+<br>
+<label>Students:</label>
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Middle Name</th>
+                        <th>Last Name</th>
+                        <th>Date of birth</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let student of students">
+                        <td>{{student.firstName}}</td>
+                        <td>{{student.middleName}}</td>
+                        <td>{{student.lastName}}</td>
+                        <td>{{student.birthDate | date: 'dd/MM/yyyy'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
