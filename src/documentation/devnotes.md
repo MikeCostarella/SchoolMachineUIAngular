@@ -11,6 +11,11 @@ Installing Angular Material 7 to the project
     * ?Set up HammerJS for gesture recognition? Y
     * ?Set up browser animations for Angular Material Y
   
+* Install the Angular Component Dev Kit (CDK) (seperately)
+  * already installed by add @angular/material
+  * https://material.angular.io/cdk/categories
+  * ng add @angular/cdk
+
 * import angular material components
   * https://material.angular.io/components/categories
 

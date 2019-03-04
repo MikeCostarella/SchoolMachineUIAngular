@@ -2,6 +2,11 @@
 
 This is a small Angular 7 application designed to act as a client to the SchoolMachineAPI Web Api project, stored in the repository of the same name.  It currently is in development stage but exercises many of the features of the Angular development framework.
 
+Includes:
+
+Angular/Material
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
