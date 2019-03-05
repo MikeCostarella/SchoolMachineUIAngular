@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ErrorHandlerService } from './../../shared/services/error-handler.service';
 import { RepositoryService } from './../../shared/services/repository.service';
 
+import { School } from './../../_interfaces/school.model';
 import { Student } from './../../_interfaces/student.model';
 
 @Component({
@@ -12,6 +13,7 @@ import { Student } from './../../_interfaces/student.model';
   styleUrls: ['./student-details.component.css']
 })
 export class StudentDetailsComponent implements OnInit {
+  public schools: School[];
   public student: Student;
   public errorMessage = '';
 
@@ -24,14 +26,24 @@ export class StudentDetailsComponent implements OnInit {
 
   getStudentDetails() {
     const id: string = this.activeRoute.snapshot.params.id;
-    const apiUrl = `api/student/${id}/schoolstudent`;
+    const studentApiUrl = `api/student/GetStudentById?id=${id}`;
+    const schoolsApiUrl = `api/student/GetSchoolsByStudentId?studentId=${id}`;
 
-    this.repository.getData(apiUrl)
+    // Get the student
+    this.repository.getData(studentApiUrl)
     .subscribe(res => {
       this.student = res as Student;
+      this.repository.getData(schoolsApiUrl)
+      .subscribe(schoolsResponse => {
+        this.schools = schoolsResponse as School[];
+      },
+      (error1) => {
+        this.errorHandler.handleError(error1);
+        this.errorMessage = this.errorHandler.errorMessage;
+      });
     },
-    (error) => {
-      this.errorHandler.handleError(error);
+    (error2) => {
+      this.errorHandler.handleError(error2);
       this.errorMessage = this.errorHandler.errorMessage;
     });
   }

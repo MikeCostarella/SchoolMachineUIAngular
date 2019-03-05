@@ -1,11 +1,63 @@
-<div>Student Details</div>
+<label>Student details:</label>
 <div class="well">
     <div class="row">
         <div class="col-md-3">
-            <strong>Student name:</strong>
+            <label for="firstName" class="control-label">First name:</label>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-7">
+            <span name="firstName">
             {{student?.firstName}}
+          </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label for="middleName" class="control-label">Middle name:</label>
+        </div>
+        <div class="col-md-7">
+            <span name="middleName">
+              {{student?.middleName}}
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label for="lastName" class="control-label">Last name:</label>
+        </div>
+        <div class="col-md-7">
+            <span name="lastName">
+              {{student?.lastName}}
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label for="birthDate" class="control-label">Date of birth:</label>
+        </div>
+        <div class="col-md-7">
+            <span name="birthDate">
+           {{student?.birthDate | date: 'MM/dd/yyyy'}}
+          </span>
+        </div>
+    </div>
+</div>
+<br>
+<label>Schools:</label>
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let school of schools">
+                        <td>{{school.Name}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

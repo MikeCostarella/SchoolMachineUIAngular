@@ -35,7 +35,6 @@ export class SchoolDetailsComponent implements OnInit {
       this.school = res as School;
       this.repository.getData(studentsApiUrl)
       .subscribe(studentsResponse => {
-        console.log(studentsResponse);
         this.students = studentsResponse as Student[];
       },
       (error1) => {
