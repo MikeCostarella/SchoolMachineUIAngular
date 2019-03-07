@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EnvironmentUrlService } from './shared/services/environment-url.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,6 +15,7 @@ import { ErrorHandlerService } from './shared/services/error-handler.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTableComponent } from './data-table/data-table.component';
 import { MatTableModule, MatPaginatorModule, MatSortModule, MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatInputModule, } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -36,9 +38,12 @@ import { MatTableModule, MatPaginatorModule, MatSortModule, MatButtonModule, Mat
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: '**', redirectTo: '/404', pathMatch: 'full'}
     ]),
+    ReactiveFormsModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatInputModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule

@@ -1,8 +1,10 @@
+import { MatTableModule, MatIconModule, MatPaginatorModule, MatSortModule, MatInputModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { SchoolListComponent } from './school-list/school-list.component';
 import { SchoolDetailsComponent } from './school-details/school-details.component';
@@ -15,6 +17,13 @@ import { SchoolDeleteComponent } from './school-delete/school-delete.component';
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatSortModule,
     RouterModule.forChild([
       { path: 'create', component: SchoolCreateComponent },
       { path: 'delete/:id', component: SchoolDeleteComponent },
@@ -22,6 +31,15 @@ import { SchoolDeleteComponent } from './school-delete/school-delete.component';
       { path: 'list', component: SchoolListComponent },
       { path: 'update/:id', component: SchoolUpdateComponent }
     ])
+  ],
+  exports: [
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   declarations: [SchoolListComponent, SchoolDetailsComponent, SchoolCreateComponent, SchoolUpdateComponent, SchoolDeleteComponent]
 })
