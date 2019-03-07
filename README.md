@@ -6,6 +6,8 @@ Includes:
 
 Angular/Material
 
+To Install Angular Material, Angular CDK and Angular Animations
+npm install --save @angular/material @angular/cdk @angular/animations
 
 ## Development server
 
