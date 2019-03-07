@@ -17,6 +17,7 @@ import { DataTableComponent } from './data-table/data-table.component';
 import { MatTableModule, MatPaginatorModule, MatSortModule, MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { MatInputModule, } from '@angular/material';
 
+// ToDo: need to clean up angular material module reference and factor in to one new module.
 @NgModule({
   declarations: [
     AppComponent,
