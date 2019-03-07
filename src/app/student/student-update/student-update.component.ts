@@ -33,7 +33,7 @@ export class StudentUpdateComponent implements OnInit {
 
   private getStudentById() {
     const studentId: string = this.activeRoute.snapshot.params.id;
-    const studentByIdUrl = `api/student/${studentId}`;
+    const studentByIdUrl = `api/student/GetStudentById?id=${studentId}`;
 
     this.repository.getData(studentByIdUrl)
       .subscribe(res => {

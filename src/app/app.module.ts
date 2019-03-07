@@ -13,7 +13,7 @@ import { InternalServerComponent } from './error-pages/internal-server/internal-
 import { ErrorHandlerService } from './shared/services/error-handler.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTableComponent } from './data-table/data-table.component';
-import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatSortModule, MatButtonModule, MatCheckboxModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -37,6 +37,8 @@ import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/mate
       { path: '**', redirectTo: '/404', pathMatch: 'full'}
     ]),
     BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule
