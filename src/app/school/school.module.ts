@@ -1,5 +1,5 @@
 import { MatTableModule, MatIconModule, MatPaginatorModule, MatSortModule, MatInputModule } from '@angular/material';
-import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material';import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
@@ -18,6 +18,7 @@ import { SchoolDeleteComponent } from './school-delete/school-delete.component';
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
+    MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
@@ -34,6 +35,7 @@ import { SchoolDeleteComponent } from './school-delete/school-delete.component';
   ],
   exports: [
     FormsModule,
+    MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
