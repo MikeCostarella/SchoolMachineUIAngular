@@ -28,8 +28,8 @@ export class SchoolUpdateComponent implements OnInit {
     this.getFormObjectById();
   }
 
-  private executeFormObjectUpdate(schoolFormValue) {
-    this.formObject.name = schoolFormValue.name;
+  private executeFormObjectUpdate(formObjectValue) {
+    this.formObject.name = formObjectValue.name;
 
     const apiUrl = `api/school/${this.formObject.id}`;
     this.repository.update(apiUrl, this.formObject)
@@ -65,9 +65,9 @@ export class SchoolUpdateComponent implements OnInit {
     this.router.navigate(['/school/list']);
   }
 
-  public updateFormObject(schoolFormValue) {
+  public updateFormObject(formObjectValue) {
     if (this.formGroup.valid) {
-      this.executeFormObjectUpdate(schoolFormValue);
+      this.executeFormObjectUpdate(formObjectValue);
     }
   }
 
