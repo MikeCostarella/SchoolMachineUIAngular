@@ -1,6 +1,6 @@
 <div>Schools</div>
 <div class="search-div">
-    <button mat-raised-button (click)="redirectToCreatePage()">
+    <button mat-raised-button data-md-tooltip="create" (click)="redirectToCreatePage()">
         <mat-icon>add</mat-icon>Create
     </button>
     <mat-form-field class="search-form-field" floatLabel="never">
@@ -19,9 +19,9 @@
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let row">
-                <button mat-icon-button (click)="redirectToUpdatePage(row)"><mat-icon>update</mat-icon></button>
-                <button mat-icon-button color="warn" (click)="redirectToDeletePage(row)"><mat-icon>delete</mat-icon></button>
-                <button mat-icon-button (click)="getSchoolStudents(row)"><mat-icon>schools</mat-icon></button>
+                <button mat-icon-button data-md-tooltip="update" (click)="redirectToUpdatePage(row)"><mat-icon>update</mat-icon></button>
+                <button mat-icon-button color="warn" data-md-tooltip="delete" (click)="redirectToDeletePage(row)"><mat-icon>delete</mat-icon></button>
+                <button mat-icon-button data-md-tooltip="students" (click)="getSchoolStudents(row)"><mat-icon>schools</mat-icon></button>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="loading">
