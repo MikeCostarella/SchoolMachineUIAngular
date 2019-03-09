@@ -1,3 +1,28 @@
-<p>
-  district-delete works!
-</p>
+<div>{{formTitle}}</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10 well">
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="name" class="control-label">Name:</label>
+                </div>
+                <div class="col-md-7">
+                    <span name="name">
+                {{formObject?.name}}
+              </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-offset-8 col-md-1">
+            <button type="submit" class="btn btn-info" (click)="deleteFormObject()">Delete</button>
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-danger" (click)="redirectToList()">Cancel</button>
+        </div>
+    </div>
+    <app-success-modal [modalHeaderText]="'Success message'" [modalBodyText]="'Action completed successfully'" [okButtonText]="'OK'" (redirectOnOK)="redirectToList()"></app-success-modal>
+    <app-error-modal [modalHeaderText]="'Error message'" [modalBodyText]="errorMessage" [okButtonText]="'OK'"></app-error-modal>
+</div>

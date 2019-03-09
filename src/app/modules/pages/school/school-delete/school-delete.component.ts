@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ErrorHandlerService } from './../../../../shared/services/error-handler.service';
 import { RepositoryService } from './../../../../shared/services/repository.service';
-import { School } from './../../../../_interfaces/school.model';
 import { Router, ActivatedRoute } from '@angular/router';
+
+import { School } from './../../../../_interfaces/school.model';
 
 @Component({
   selector: 'app-school-delete',
@@ -10,36 +11,20 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./school-delete.component.css']
 })
 export class SchoolDeleteComponent implements OnInit {
+
   public errorMessage = '';
-  public school: School;
+  public formObject: School;
+  public formTitle = 'Delete school';
 
   constructor(private repository: RepositoryService, private errorHandler: ErrorHandlerService, private router: Router,
               private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getSchoolById();
+    this.getFormObjectById();
   }
 
-  private getSchoolById() {
-    const schoolId: string = this.activeRoute.snapshot.params.id;
-    const schoolByIdUrl = `api/school/${schoolId}`;
-
-    this.repository.getData(schoolByIdUrl)
-      .subscribe(res => {
-        this.school = res as School;
-      },
-      (error) => {
-        this.errorHandler.handleError(error);
-        this.errorMessage = this.errorHandler.errorMessage;
-      });
-  }
-
-  public redirectToSchoolList() {
-    this.router.navigate(['/school/list']);
-  }
-
-  public deleteSchool() {
-    const deleteUrl = `api/school/${this.school.id}`;
+  public deleteFormObject() {
+    const deleteUrl = `api/school/${this.formObject.id}`;
     this.repository.delete(deleteUrl)
       .subscribe(res => {
         $('#successModal').modal();
@@ -48,6 +33,23 @@ export class SchoolDeleteComponent implements OnInit {
         this.errorHandler.handleError(error);
         this.errorMessage = this.errorHandler.errorMessage;
       });
+  }
+
+  private getFormObjectById() {
+    const formObjectId: string = this.activeRoute.snapshot.params.id;
+    const formObjectByIdUrl = `api/school/${formObjectId}`;
+    this.repository.getData(formObjectByIdUrl)
+      .subscribe(res => {
+        this.formObject = res as School;
+      },
+      (error) => {
+        this.errorHandler.handleError(error);
+        this.errorMessage = this.errorHandler.errorMessage;
+      });
+  }
+
+  public redirectToList() {
+    this.router.navigate(['/school/list']);
   }
 
 }
