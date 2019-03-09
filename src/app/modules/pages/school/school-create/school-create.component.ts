@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SchoolForCreation } from './../../../../_interfaces/school-for-creation.model';
 import { ErrorHandlerService } from './../../../../shared/services/error-handler.service';
 import { RepositoryService } from './../../../../shared/services/repository.service';
 import { Router } from '@angular/router';
+
+import { SchoolForCreation } from './../../../../_interfaces/school-for-creation.model';
 
 @Component({
   selector: 'app-school-create',
