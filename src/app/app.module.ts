@@ -29,12 +29,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     NotFoundComponent,
     InternalServerComponent,
     DataTableComponent,
-    ],
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
+      { path: 'district', loadChildren: './modules/pages/district/district.module#DistrictModule' },
       { path: 'school', loadChildren: './modules/pages/school/school.module#SchoolModule' },
       { path: 'student', loadChildren: './modules/pages/student/student.module#StudentModule' },
       { path: '404', component : NotFoundComponent},

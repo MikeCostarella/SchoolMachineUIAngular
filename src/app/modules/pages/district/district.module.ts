@@ -9,19 +9,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { SharedModule } from '../../../shared/shared.module';
 
-import { SchoolListComponent } from './school-list/school-list.component';
-import { SchoolDetailsComponent } from './school-details/school-details.component';
-import { SchoolCreateComponent } from './school-create/school-create.component';
-import { SchoolUpdateComponent } from './school-update/school-update.component';
-import { SchoolDeleteComponent } from './school-delete/school-delete.component';
+import { DistrictListComponent } from './district-list/district-list.component';
+import { DistrictDetailsComponent } from './district-details/district-details.component';
+import { DistrictCreateComponent } from './district-create/district-create.component';
+import { DistrictUpdateComponent } from './district-update/district-update.component';
+import { DistrictDeleteComponent } from './district-delete/district-delete.component';
 
 @NgModule({
   declarations: [
-    SchoolListComponent,
-    SchoolDetailsComponent,
-    SchoolCreateComponent,
-    SchoolUpdateComponent,
-    SchoolDeleteComponent
+    DistrictListComponent,
+    DistrictDetailsComponent,
+    DistrictCreateComponent,
+    DistrictUpdateComponent,
+    DistrictDeleteComponent
   ],
   imports: [
     CommonModule,
@@ -36,11 +36,11 @@ import { SchoolDeleteComponent } from './school-delete/school-delete.component';
     MatPaginatorModule,
     MatSortModule,
     RouterModule.forChild([
-      { path: 'create', component: SchoolCreateComponent },
-      { path: 'delete/:id', component: SchoolDeleteComponent },
-      { path: 'details/:id', component: SchoolDetailsComponent },
-      { path: 'list', component: SchoolListComponent },
-      { path: 'update/:id', component: SchoolUpdateComponent }
+      { path: 'create', component: DistrictCreateComponent },
+      { path: 'delete/:id', component: DistrictDeleteComponent },
+      { path: 'details/:id', component: DistrictDetailsComponent },
+      { path: 'list', component: DistrictListComponent },
+      { path: 'update/:id', component: DistrictUpdateComponent }
     ])
   ],
   exports: [
@@ -54,4 +54,4 @@ import { SchoolDeleteComponent } from './school-delete/school-delete.component';
     MatSortModule
   ]
 })
-export class SchoolModule { }
+export class DistrictModule { }
