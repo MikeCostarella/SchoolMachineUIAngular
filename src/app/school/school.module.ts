@@ -43,6 +43,12 @@ import { SchoolDeleteComponent } from './school-delete/school-delete.component';
     MatPaginatorModule,
     MatSortModule,
   ],
-  declarations: [SchoolListComponent, SchoolDetailsComponent, SchoolCreateComponent, SchoolUpdateComponent, SchoolDeleteComponent]
+  declarations: [
+    SchoolListComponent,
+    SchoolDetailsComponent,
+    SchoolCreateComponent,
+    SchoolUpdateComponent,
+    SchoolDeleteComponent
+  ]
 })
 export class SchoolModule { }

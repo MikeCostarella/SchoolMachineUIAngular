@@ -23,6 +23,12 @@ import { StudentDeleteComponent } from './student-delete/student-delete.componen
       { path: 'update/:id', component: StudentUpdateComponent }
     ])
  ],
-  declarations: [StudentListComponent, StudentDetailsComponent, StudentCreateComponent, StudentUpdateComponent, StudentDeleteComponent]
+  declarations: [
+    StudentListComponent,
+    StudentDetailsComponent,
+    StudentCreateComponent,
+    StudentUpdateComponent,
+    StudentDeleteComponent
+  ]
 })
 export class StudentModule { }
