@@ -1,6 +1,6 @@
-<div>Create new student</div>
+<div>{{formTitle}}</div>
 <div class="container-fluid">
-    <form [formGroup]="studentForm" autocomplete="off" novalidate (ngSubmit)="createStudent(studentForm.value)">
+    <form [formGroup]="formGroup" autocomplete="off" novalidate (ngSubmit)="createFormObject(formGroup.value)">
         <div class="form-horizontal well">
 
             <div class="form-group">
@@ -50,10 +50,10 @@
 
             <div class="form-group">
                 <div class="col-md-offset-5 col-md-1">
-                    <button type="submit" class="btn btn-info" [disabled]="!studentForm.valid">Save</button>
+                    <button type="submit" class="btn btn-info" [disabled]="!formGroup.valid">Save</button>
                 </div>
                 <div class="col-md-1">
-                    <button type="button" class="btn btn-danger" (click)="redirectToStudentList()">Cancel</button>
+                    <button type="button" class="btn btn-danger" (click)="redirectToList()">Cancel</button>
                 </div>
             </div>
 

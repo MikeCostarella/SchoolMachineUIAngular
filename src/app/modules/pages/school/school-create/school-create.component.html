@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div>{{formTitle}}</div>
-    <form [formGroup]="formGroup" autocomplete="off" novalidate (ngSubmit)="createFormObject(schoolForm.value)">
+    <form [formGroup]="formGroup" autocomplete="off" novalidate (ngSubmit)="createFormObject(formGroup.value)">
         <div class="form-horizontal well">
             <div class="form-group">
                 <label for="name" class="control-label col-md-2">Name: </label>

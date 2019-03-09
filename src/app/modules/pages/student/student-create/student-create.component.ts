@@ -13,12 +13,13 @@ import { Router } from '@angular/router';
 export class StudentCreateComponent implements OnInit {
 
   public errorMessage = '';
-  public studentForm: FormGroup;
+  public formGroup: FormGroup;
+  public formTitle = 'Create new student';
 
   constructor(private repository: RepositoryService, private errorHandler: ErrorHandlerService, private router: Router) { }
 
   ngOnInit() {
-    this.studentForm = new FormGroup({
+    this.formGroup = new FormGroup({
       firstName: new FormControl('', [Validators.required, Validators.maxLength(60)]),
       middleName: new FormControl('', [Validators.required, Validators.maxLength(60)]),
       lastName: new FormControl('', [Validators.required, Validators.maxLength(60)]),
@@ -26,38 +27,23 @@ export class StudentCreateComponent implements OnInit {
     });
   }
 
-  public validateControl(controlName: string) {
-    if (this.studentForm.controls[controlName].invalid && this.studentForm.controls[controlName].touched) {
-      return true;
+  public createFormObject(formGroupValue) {
+    if (this.formGroup.valid) {
+      this.executeFormObjectCreation(formGroupValue);
     }
-    return false;
-  }
-
-  public hasError(controlName: string, errorName: string) {
-    if (this.studentForm.controls[controlName].hasError(errorName)) {
-      return true;
-    }
-    return false;
   }
 
   public executeDatePicker(event) {
-    this.studentForm.patchValue({ birthDate: event });
+    this.formGroup.patchValue({ birthDate: event });
   }
 
-  public createStudent(studentFormValue) {
-    if (this.studentForm.valid) {
-      this.executeStudentCreation(studentFormValue);
-    }
-  }
-
-  private executeStudentCreation(studentFormValue) {
+  private executeFormObjectCreation(formGroupValue) {
     const student: StudentForCreation = {
-      firstName: studentFormValue.firstName,
-      middleName: studentFormValue.middleName,
-      lastName: studentFormValue.lastName,
-      birthDate: studentFormValue.birthDate
+      firstName: formGroupValue.firstName,
+      middleName: formGroupValue.middleName,
+      lastName: formGroupValue.lastName,
+      birthDate: formGroupValue.birthDate
     };
-
     const apiUrl = 'api/student';
     this.repository.create(apiUrl, student)
       .subscribe(res => {
@@ -70,8 +56,22 @@ export class StudentCreateComponent implements OnInit {
     );
   }
 
-  public redirectToStudentList() {
+  public hasError(controlName: string, errorName: string) {
+    if (this.formGroup.controls[controlName].hasError(errorName)) {
+      return true;
+    }
+    return false;
+  }
+
+  public redirectToList() {
     this.router.navigate(['/student/list']);
+  }
+
+  public validateControl(controlName: string) {
+    if (this.formGroup.controls[controlName].invalid && this.formGroup.controls[controlName].touched) {
+      return true;
+    }
+    return false;
   }
 
 }
