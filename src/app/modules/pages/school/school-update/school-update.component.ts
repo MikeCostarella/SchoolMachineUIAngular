@@ -13,65 +13,26 @@ import { School } from './../../../../_interfaces/school.model';
 export class SchoolUpdateComponent implements OnInit {
 
   public errorMessage = '';
-  public school: School;
-  public schoolForm: FormGroup;
+  public formObject: School;
+  public formGroup: FormGroup;
+  public formTitle = 'Update school';
 
   constructor(private repository: RepositoryService, private errorHandler: ErrorHandlerService, private router: Router,
               private activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.schoolForm = new FormGroup({
+    this.formGroup = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.maxLength(60)])
     });
 
-    this.getSchoolById();
+    this.getFormObjectById();
   }
 
-  private getSchoolById() {
-    const schoolId: string = this.activeRoute.snapshot.params.id;
+  private executeFormObjectUpdate(schoolFormValue) {
+    this.formObject.name = schoolFormValue.name;
 
-    const schoolByIdUrl = `api/school/${schoolId}`;
-
-    this.repository.getData(schoolByIdUrl)
-      .subscribe(res => {
-        this.school = res as School;
-        this.schoolForm.patchValue(this.school);
-      },
-      (error) => {
-        this.errorHandler.handleError(error);
-        this.errorMessage = this.errorHandler.errorMessage;
-      });
-  }
-
-  public validateControl(controlName: string) {
-    if (this.schoolForm.controls[controlName].invalid && this.schoolForm.controls[controlName].touched) {
-      return true;
-    }
-    return false;
-  }
-
-  public hasError(controlName: string, errorName: string) {
-    if (this.schoolForm.controls[controlName].hasError(errorName)) {
-      return true;
-    }
-    return false;
-  }
-
-  public redirectToSchoolList() {
-    this.router.navigate(['/school/list']);
-  }
-
-  public updateOwner(schoolFormValue) {
-    if (this.schoolForm.valid) {
-      this.executeSchoolUpdate(schoolFormValue);
-    }
-  }
-
-  private executeSchoolUpdate(schoolFormValue) {
-    this.school.name = schoolFormValue.name;
-
-    const apiUrl = `api/school/${this.school.id}`;
-    this.repository.update(apiUrl, this.school)
+    const apiUrl = `api/school/${this.formObject.id}`;
+    this.repository.update(apiUrl, this.formObject)
       .subscribe(res => {
         $('#successModal').modal();
       },
@@ -80,6 +41,38 @@ export class SchoolUpdateComponent implements OnInit {
         this.errorMessage = this.errorHandler.errorMessage;
       })
     );
+  }
+
+  private getFormObjectById() {
+    const formObjectId: string = this.activeRoute.snapshot.params.id;
+    const formObjectByIdUrl = `api/school/${formObjectId}`;
+    this.repository.getData(formObjectByIdUrl)
+      .subscribe(res => {
+        this.formObject = res as School;
+        this.formGroup.patchValue(this.formObject);
+      },
+      (error) => {
+        this.errorHandler.handleError(error);
+        this.errorMessage = this.errorHandler.errorMessage;
+      });
+  }
+
+  public hasError(controlName: string, errorName: string) {
+    return (this.formGroup.controls[controlName].hasError(errorName));
+  }
+
+  public redirectToList() {
+    this.router.navigate(['/school/list']);
+  }
+
+  public updateFormObject(schoolFormValue) {
+    if (this.formGroup.valid) {
+      this.executeFormObjectUpdate(schoolFormValue);
+    }
+  }
+
+  public validateControl(controlName: string) {
+    return (this.formGroup.controls[controlName].invalid && this.formGroup.controls[controlName].touched);
   }
 
 }
