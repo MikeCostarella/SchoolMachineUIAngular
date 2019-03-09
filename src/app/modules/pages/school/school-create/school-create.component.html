@@ -1,6 +1,6 @@
 <div class="container-fluid">
-    <div>Create new school</div>
-    <form [formGroup]="schoolForm" autocomplete="off" novalidate (ngSubmit)="createSchool(schoolForm.value)">
+    <div>{{formTitle}}</div>
+    <form [formGroup]="formGroup" autocomplete="off" novalidate (ngSubmit)="createFormObject(schoolForm.value)">
         <div class="form-horizontal well">
             <div class="form-group">
                 <label for="name" class="control-label col-md-2">Name: </label>
@@ -12,23 +12,17 @@
                     <em *ngIf="validateControl('name') && hasError('name', 'maxlength')">Maximum allowed length is 60 characters.</em>
                 </div>
             </div>
-
             <br><br>
-
             <div class="form-group">
                 <div class="col-md-offset-5 col-md-1">
-                    <button type="submit" class="btn btn-info" [disabled]="!schoolForm.valid">Save</button>
+                    <button type="submit" class="btn btn-info" [disabled]="!formGroup.valid">Save</button>
                 </div>
                 <div class="col-md-1">
-                    <button type="button" class="btn btn-danger" (click)="redirectToSchoolList()">Cancel</button>
+                    <button type="button" class="btn btn-danger" (click)="redirectToList()">Cancel</button>
                 </div>
             </div>
-
         </div>
     </form>
-
-    <app-success-modal [modalHeaderText]="'Success message'" [modalBodyText]="'Action completed successfully'" [okButtonText]="'OK'" (redirectOnOK)="redirectToSchoolList()"></app-success-modal>
-
+    <app-success-modal [modalHeaderText]="'Success message'" [modalBodyText]="'Action completed successfully'" [okButtonText]="'OK'" (redirectOnOK)="redirectToList()"></app-success-modal>
     <app-error-modal [modalHeaderText]="'Error message'" [modalBodyText]="errorMessage" [okButtonText]="'OK'"></app-error-modal>
-
 </div>

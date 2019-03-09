@@ -13,39 +13,26 @@ import { Router } from '@angular/router';
 export class SchoolCreateComponent implements OnInit {
 
   public errorMessage = '';
-  public schoolForm: FormGroup;
+  public formGroup: FormGroup;
+  public formTitle = 'Create new school';
 
   constructor(private repository: RepositoryService, private errorHandler: ErrorHandlerService, private router: Router) { }
 
   ngOnInit() {
-    this.schoolForm = new FormGroup({
+    this.formGroup = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.maxLength(100)])
     });
   }
 
-  public validateControl(controlName: string) {
-    if (this.schoolForm.controls[controlName].invalid && this.schoolForm.controls[controlName].touched) {
-      return true;
-    }
-    return false;
-  }
-
-  public hasError(controlName: string, errorName: string) {
-    if (this.schoolForm.controls[controlName].hasError(errorName)) {
-      return true;
-    }
-    return false;
-  }
-
-  public createSchool(schoolFormValue) {
-    if (this.schoolForm.valid) {
-      this.executeSchoolCreation(schoolFormValue);
+  public createFormObject(formGroupValue) {
+    if (this.formGroup.valid) {
+      this.executeFormObjectCreation(formGroupValue);
     }
   }
 
-  private executeSchoolCreation(schoolFormValue) {
+  private executeFormObjectCreation(formGroupValue) {
     const school: SchoolForCreation = {
-      name: schoolFormValue.name
+      name: formGroupValue.name
     };
 
     const apiUrl = 'api/school';
@@ -60,8 +47,22 @@ export class SchoolCreateComponent implements OnInit {
     );
   }
 
-  public redirectToSchoolList() {
+  public hasError(controlName: string, errorName: string) {
+    if (this.formGroup.controls[controlName].hasError(errorName)) {
+      return true;
+    }
+    return false;
+  }
+
+  public redirectToList() {
     this.router.navigate(['/school/list']);
+  }
+
+  public validateControl(controlName: string) {
+    if (this.formGroup.controls[controlName].invalid && this.formGroup.controls[controlName].touched) {
+      return true;
+    }
+    return false;
   }
 
 }
