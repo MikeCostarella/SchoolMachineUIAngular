@@ -14,75 +14,35 @@ import { DatePipe } from '@angular/common';
 })
 export class StudentUpdateComponent implements OnInit {
   public errorMessage = '';
-  public student: Student;
-  public studentForm: FormGroup;
+  public formObject: Student;
+  public formGroup: FormGroup;
+  public formTitle = 'Update student';
 
   constructor(private repository: RepositoryService, private errorHandler: ErrorHandlerService, private router: Router,
               private activeRoute: ActivatedRoute, private datePipe: DatePipe) { }
 
   ngOnInit() {
-    this.studentForm = new FormGroup({
+    this.formGroup = new FormGroup({
       firstName: new FormControl('', [Validators.required, Validators.maxLength(60)]),
       middleName: new FormControl('', [Validators.required, Validators.maxLength(60)]),
       lastName: new FormControl('', [Validators.required, Validators.maxLength(60)]),
       birthDate: new FormControl('', [Validators.required])
     });
-
-    this.getStudentById();
-  }
-
-  private getStudentById() {
-    const studentId: string = this.activeRoute.snapshot.params.id;
-    const studentByIdUrl = `api/student/GetStudentById?id=${studentId}`;
-
-    this.repository.getData(studentByIdUrl)
-      .subscribe(res => {
-        this.student = res as Student;
-        this.studentForm.patchValue(this.student);
-        $('#birthDate').val(this.datePipe.transform(this.student.birthDate, 'MM/dd/yyyy'));
-      },
-      (error) => {
-        this.errorHandler.handleError(error);
-        this.errorMessage = this.errorHandler.errorMessage;
-      });
-  }
-
-  public validateControl(controlName: string) {
-    if (this.studentForm.controls[controlName].invalid && this.studentForm.controls[controlName].touched) {
-      return true;
-    }
-    return false;
-  }
-
-  public hasError(controlName: string, errorName: string) {
-    if (this.studentForm.controls[controlName].hasError(errorName)) {
-      return true;
-    }
-    return false;
+    this.getFocusObjectById();
   }
 
   public executeDatePicker(event: any) {
-    this.studentForm.patchValue({ birthDate: event });
+    this.formGroup.patchValue({ birthDate: event });
   }
 
-  public redirectToStudentList() {
-    this.router.navigate(['/student/list']);
-  }
+  private executeFocusObjectUpdate(studentFormValue) {
+    this.formObject.firstName = studentFormValue.firstName;
+    this.formObject.middleName = studentFormValue.middleName;
+    this.formObject.lastName = studentFormValue.lastName;
+    this.formObject.birthDate = studentFormValue.birthDate;
 
-  public updateOwner(studentFormValue) {
-    if (this.studentForm.valid) {
-      this.executeStudentUpdate(studentFormValue);
-    }
-  }
-
-  private executeStudentUpdate(studentFormValue) {
-    this.student.firstName = studentFormValue.firstName;
-    this.student.middleName = studentFormValue.middleName;
-    this.student.lastName = studentFormValue.lastName;
-    this.student.birthDate = studentFormValue.birthDate;
-
-    const apiUrl = `api/student/${this.student.id}`;
-    this.repository.update(apiUrl, this.student)
+    const apiUrl = `api/student/${this.formObject.id}`;
+    this.repository.update(apiUrl, this.formObject)
       .subscribe(res => {
         $('#successModal').modal();
       },
@@ -91,6 +51,40 @@ export class StudentUpdateComponent implements OnInit {
         this.errorMessage = this.errorHandler.errorMessage;
       })
     );
+  }
+
+  private getFocusObjectById() {
+    const studentId: string = this.activeRoute.snapshot.params.id;
+    const studentByIdUrl = `api/student/GetStudentById?id=${studentId}`;
+
+    this.repository.getData(studentByIdUrl)
+      .subscribe(res => {
+        this.formObject = res as Student;
+        this.formGroup.patchValue(this.formObject);
+        $('#birthDate').val(this.datePipe.transform(this.formObject.birthDate, 'MM/dd/yyyy'));
+      },
+      (error) => {
+        this.errorHandler.handleError(error);
+        this.errorMessage = this.errorHandler.errorMessage;
+      });
+  }
+
+  public hasError(controlName: string, errorName: string) {
+    return (this.formGroup.controls[controlName].hasError(errorName));
+  }
+
+  public redirectToList() {
+    this.router.navigate(['/student/list']);
+  }
+
+  public updateFormObject(formGroupValue) {
+    if (this.formGroup.valid) {
+      this.executeFocusObjectUpdate(formGroupValue);
+    }
+  }
+
+  public validateControl(controlName: string) {
+    return (this.formGroup.controls[controlName].invalid && this.formGroup.controls[controlName].touched);
   }
 
 }

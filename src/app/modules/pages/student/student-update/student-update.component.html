@@ -1,40 +1,37 @@
+<label>{{formTitle}}</label>
 <div class="container-fluid">
-    <form [formGroup]="studentForm" autocomplete="off" novalidate (ngSubmit)="updateStudent(studentForm.value)">
+    <form [formGroup]="formGroup" autocomplete="off" novalidate (ngSubmit)="updateFormObject(formGroup.value)">
         <div class="form-horizontal well">
-
             <div class="form-group">
-                <label for="firstName" class="control-label col-md-2">First name of the student: </label>
+                <label for="firstName" class="control-label col-md-2">First name: </label>
                 <div class="col-md-5">
                     <input type="text" formControlName="firstName" id="firstName" class="form-control" />
                 </div>
                 <div class="col-md-5">
                     <em *ngIf="validateControl('firstName') && hasError('firstName', 'required')">First name is required</em>
-                    <em *ngIf="validateControl('firstName') && hasError('firstName', 'maxlength')">Maximum allowed length is 60 characters.</em>
+                    <em *ngIf="validateControl('firstName') && hasError('firstName', 'maxlength')">Maximum length is 60 characters.</em>
                 </div>
             </div>
-
             <div class="form-group">
-                <label for="middleName" class="control-label col-md-2">Middle name of the student: </label>
+                <label for="middleName" class="control-label col-md-2">Middle name: </label>
                 <div class="col-md-5">
                     <input type="text" formControlName="middleName" id="middleName" class="form-control" />
                 </div>
                 <div class="col-md-5">
                     <em *ngIf="validateControl('middleName') && hasError('middleName', 'required')">Middle name is required</em>
-                    <em *ngIf="validateControl('middleName') && hasError('middleName', 'maxlength')">Maximum allowed length is 60 characters.</em>
+                    <em *ngIf="validateControl('middleName') && hasError('middleName', 'maxlength')">Maximum length is 60 characters.</em>
                 </div>
             </div>
-
             <div class="form-group">
-                <label for="lastName" class="control-label col-md-2">Last name of the student: </label>
+                <label for="lastName" class="control-label col-md-2">Last name: </label>
                 <div class="col-md-5">
                     <input type="text" formControlName="lastName" id="lastName" class="form-control" />
                 </div>
                 <div class="col-md-5">
                     <em *ngIf="validateControl('lastName') && hasError('lastName', 'required')">Middle name is required</em>
-                    <em *ngIf="validateControl('lastName') && hasError('lastName', 'maxlength')">Maximum allowed length is 60 characters.</em>
+                    <em *ngIf="validateControl('lastName') && hasError('lastName', 'maxlength')">Maximum length is 60 characters.</em>
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="birthDate" class="control-label col-md-2">Date of birth: </label>
                 <div class="col-md-5">
@@ -44,19 +41,18 @@
                     <em *ngIf="validateControl('birthDate') && hasError('birthDate', 'required')">Date of birth is required</em>
                 </div>
             </div>
-
             <br><br>
             <div class="form-group">
                 <div class="col-md-offset-5 col-md-1">
-                    <button type="submit" class="btn btn-info" [disabled]="!studentForm.valid">Update</button>
+                    <button type="submit" class="btn btn-info" [disabled]="!formGroup.valid">Update</button>
                 </div>
                 <div class="col-md-1">
-                    <button type="button" class="btn btn-danger" (click)="redirectToStudentList()">Cancel</button>
+                    <button type="button" class="btn btn-danger" (click)="redirectToList()">Cancel</button>
                 </div>
             </div>
         </div>
     </form>
 
-    <app-success-modal [modalHeaderText]="'Success message'" [modalBodyText]="'Action completed successfully'" [okButtonText]="'OK'" (redirectOnOK)="redirectToStudentList()"></app-success-modal>
+    <app-success-modal [modalHeaderText]="'Success message'" [modalBodyText]="'Action completed successfully'" [okButtonText]="'OK'" (redirectOnOK)="redirectToList()"></app-success-modal>
     <app-error-modal [modalHeaderText]="'Error message'" [modalBodyText]="errorMessage" [okButtonText]="'OK'"></app-error-modal>
 </div>
