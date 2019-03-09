@@ -1,11 +1,10 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { ErrorHandlerService } from './../../shared/services/error-handler.service';
 import { RepositoryService } from './../../shared/services/repository.service';
-
-import { MatFormField, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { School } from './../../_interfaces/school.model';
 
 @Component({
@@ -14,6 +13,7 @@ import { School } from './../../_interfaces/school.model';
   styleUrls: ['./school-list.component.css']
 })
 export class SchoolListComponent implements OnInit {
+
   public listData: MatTableDataSource<any>;
   public displayedColumns: string[] = ['name', 'actions'];
   @ViewChild(MatSort) sort: MatSort;

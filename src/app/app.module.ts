@@ -14,8 +14,11 @@ import { InternalServerComponent } from './error-pages/internal-server/internal-
 import { ErrorHandlerService } from './shared/services/error-handler.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTableComponent } from './data-table/data-table.component';
-import { MatTableModule, MatPaginatorModule, MatSortModule, MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { MatInputModule, MatIconModule } from '@angular/material';
+import { MatPaginatorModule, MatTableModule } from '@angular/material';
+import { MatSortModule } from '@angular/material';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 // ToDo: need to clean up angular material module reference and factor in to one new module.
 @NgModule({
@@ -46,9 +49,10 @@ import { MatInputModule, MatIconModule } from '@angular/material';
     MatCheckboxModule,
     MatIconModule,
     MatInputModule,
-    MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatTableModule,
+    MatTooltipModule
  ],
   providers: [
     EnvironmentUrlService,
