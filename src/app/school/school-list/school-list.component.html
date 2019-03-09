@@ -24,9 +24,9 @@
         <ng-container matColumnDef="actions">
             <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let row">
-                <button mat-icon-button><mat-icon>update</mat-icon></button>
-                <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
-                <button mat-icon-button><mat-icon>schools</mat-icon></button>
+                <button mat-icon-button (click)="redirectToUpdatePage(row)"><mat-icon>update</mat-icon></button>
+                <button mat-icon-button color="warn" (click)="redirectToDeletePage(row)"><mat-icon>delete</mat-icon></button>
+                <button mat-icon-button (click)="getSchoolStudents(row)"><mat-icon>schools</mat-icon></button>
             </mat-cell>
         </ng-container>
         <ng-container matColumnDef="loading">
@@ -45,29 +45,4 @@
         <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}"></mat-footer-row>
     </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
-</div>
-<br>
-<div class="row">
-    <div class="col-md-12">
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Update</th>
-                        <th>Delete</th>
-                        <th>Students</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let school of schools">
-                        <td>{{school.name}}</td>
-                        <td><button type="button" id="update" class="btn btn-success" (click)="redirectToUpdatePage(school.id)">Update</button></td>
-                        <td><button type="button" id="delete" class="btn btn-danger" (click)="redirectToDeletePage(school.id)">Delete</button></td>
-                        <td><button type="button" id="students" class="btn btn-default" (click)="getSchoolStudents(school.id)">Students</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
 </div>

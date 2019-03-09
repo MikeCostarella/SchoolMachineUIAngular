@@ -52,8 +52,8 @@ export class SchoolListComponent implements OnInit {
     });
   }
 
-  public getSchoolStudents(id: string) {
-    const schoolStudentsUrl = `/school/details/${id}`;
+  public getSchoolStudents(row: any) {
+    const schoolStudentsUrl = `/school/details/${row.id}`;
     this.router.navigate([schoolStudentsUrl]);
   }
 
@@ -62,13 +62,13 @@ export class SchoolListComponent implements OnInit {
     this.applyFilter();
   }
 
-  public redirectToUpdatePage(id: string) {
-    const updateUrl = `/school/update/${id}`;
+  public redirectToUpdatePage(row: any) {
+    const updateUrl = `/school/update/${row.id}`;
     this.router.navigate([updateUrl]);
   }
 
-  public redirectToDeletePage(id: string) {
-    const deleteUrl = `/school/delete/${id}`;
+  public redirectToDeletePage(row: any) {
+    const deleteUrl = `/school/delete/${row.id}`;
     this.router.navigate([deleteUrl]);
   }
 
