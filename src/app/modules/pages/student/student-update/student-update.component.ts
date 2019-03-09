@@ -13,6 +13,7 @@ import { DatePipe } from '@angular/common';
   providers: [DatePipe]
 })
 export class StudentUpdateComponent implements OnInit {
+
   public errorMessage = '';
   public formObject: Student;
   public formGroup: FormGroup;
@@ -35,11 +36,11 @@ export class StudentUpdateComponent implements OnInit {
     this.formGroup.patchValue({ birthDate: event });
   }
 
-  private executeFocusObjectUpdate(studentFormValue) {
-    this.formObject.firstName = studentFormValue.firstName;
-    this.formObject.middleName = studentFormValue.middleName;
-    this.formObject.lastName = studentFormValue.lastName;
-    this.formObject.birthDate = studentFormValue.birthDate;
+  private executeFocusObjectUpdate(formObjectValue) {
+    this.formObject.firstName = formObjectValue.firstName;
+    this.formObject.middleName = formObjectValue.middleName;
+    this.formObject.lastName = formObjectValue.lastName;
+    this.formObject.birthDate = formObjectValue.birthDate;
 
     const apiUrl = `api/student/${this.formObject.id}`;
     this.repository.update(apiUrl, this.formObject)
