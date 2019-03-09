@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../../../shared/shared.module';
 
 import { SchoolListComponent } from './school-list/school-list.component';
 import { SchoolDetailsComponent } from './school-details/school-details.component';

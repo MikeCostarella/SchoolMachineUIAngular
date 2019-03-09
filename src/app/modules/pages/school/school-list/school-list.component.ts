@@ -1,43 +1,43 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ErrorHandlerService } from './../../shared/services/error-handler.service';
-import { RepositoryService } from './../../shared/services/repository.service';
+import { ErrorHandlerService } from './../../../../shared/services/error-handler.service';
+import { RepositoryService } from './../../../../shared/services/repository.service';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { Student } from './../../_interfaces/student.model';
+import { School } from './../../../../_interfaces/school.model';
 
 @Component({
-  selector: 'app-student-list',
-  templateUrl: './student-list.component.html',
-  styleUrls: ['./student-list.component.css']
+  selector: 'app-school-list',
+  templateUrl: './school-list.component.html',
+  styleUrls: ['./school-list.component.css']
 })
-export class StudentListComponent implements OnInit {
+export class SchoolListComponent implements OnInit {
 
   public listData: MatTableDataSource<any>;
-  public displayedColumns: string[] = ['lastName', 'firstName', 'middleName', 'birthDate', 'actions'];
+  public displayedColumns: string[] = ['name', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   public searchKey: string;
-  public students: Student[];
+  public schools: School[];
   public errorMessage = '';
 
   constructor(private repository: RepositoryService, private errorHandler: ErrorHandlerService, private router: Router) { }
 
   ngOnInit() {
-    this.getAllStudents();
+    this.getAllSchools();
   }
 
   public applyFilter() {
     this.listData.filter = this.searchKey.trim().toLowerCase();
   }
 
-  public getAllStudents() {
-    const apiAddress = 'api/student';
+  public getAllSchools() {
+    const apiAddress = 'api/school';
     this.repository.getData(apiAddress)
     .subscribe(res => {
-      this.students = res as Student[];
-      this.listData = new MatTableDataSource(this.students);
+      this.schools = res as School[];
+      this.listData = new MatTableDataSource(this.schools);
       this.listData.sort = this.sort;
       this.listData.paginator = this.paginator;
       this.listData.filterPredicate = (data, filter) => {
@@ -52,9 +52,9 @@ export class StudentListComponent implements OnInit {
     });
   }
 
-  public getStudentSchools(row: any) {
-    const detailsUrl = `/student/details/${row.id}`;
-    this.router.navigate([detailsUrl]);
+  public getSchoolStudents(row: any) {
+    const schoolStudentsUrl = `/school/details/${row.id}`;
+    this.router.navigate([schoolStudentsUrl]);
   }
 
   public onSearchClear() {
@@ -63,17 +63,17 @@ export class StudentListComponent implements OnInit {
   }
 
   public redirectToCreatePage() {
-    const createUrl = `/student/create/`;
+    const createUrl = `/school/create/`;
     this.router.navigate([createUrl]);
   }
 
   public redirectToUpdatePage(row: any) {
-    const updateUrl = `/student/update/${row.id}`;
+    const updateUrl = `/school/update/${row.id}`;
     this.router.navigate([updateUrl]);
   }
 
   public redirectToDeletePage(row: any) {
-    const deleteUrl = `/student/delete/${row.id}`;
+    const deleteUrl = `/school/delete/${row.id}`;
     this.router.navigate([deleteUrl]);
   }
 

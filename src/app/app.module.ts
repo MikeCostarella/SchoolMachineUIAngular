@@ -35,8 +35,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
-      { path: 'school', loadChildren: './school/school.module#SchoolModule' },
-      { path: 'student', loadChildren: './student/student.module#StudentModule' },
+      { path: 'school', loadChildren: './modules/pages/school/school.module#SchoolModule' },
+      { path: 'student', loadChildren: './modules/pages/student/student.module#StudentModule' },
       { path: '404', component : NotFoundComponent},
       { path: '500', component: InternalServerComponent },
       { path: '', redirectTo: '/home', pathMatch: 'full' },

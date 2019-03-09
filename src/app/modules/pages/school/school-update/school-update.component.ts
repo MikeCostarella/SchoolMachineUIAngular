@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ErrorHandlerService } from './../../shared/services/error-handler.service';
-import { RepositoryService } from './../../shared/services/repository.service';
+import { ErrorHandlerService } from './../../../../shared/services/error-handler.service';
+import { RepositoryService } from './../../../../shared/services/repository.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { School } from './../../_interfaces/school.model';
+import { School } from './../../../../_interfaces/school.model';
 
 @Component({
   selector: 'app-school-update',

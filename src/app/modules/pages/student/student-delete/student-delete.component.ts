@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ErrorHandlerService } from './../../shared/services/error-handler.service';
-import { RepositoryService } from './../../shared/services/repository.service';
-import { Student } from './../../_interfaces/student.model';
+import { ErrorHandlerService } from './../../../../shared/services/error-handler.service';
+import { RepositoryService } from './../../../../shared/services/repository.service';
+import { Student } from './../../../../_interfaces/student.model';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({

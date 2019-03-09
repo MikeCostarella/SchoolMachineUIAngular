@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { ErrorHandlerService } from './../../shared/services/error-handler.service';
-import { RepositoryService } from './../../shared/services/repository.service';
+import { ErrorHandlerService } from './../../../../shared/services/error-handler.service';
+import { RepositoryService } from './../../../../shared/services/repository.service';
 
-import { School } from './../../_interfaces/school.model';
-import { Student } from './../../_interfaces/student.model';
+import { School } from './../../../../_interfaces/school.model';
+import { Student } from './../../../../_interfaces/student.model';
 
 @Component({
   selector: 'app-student-details',
