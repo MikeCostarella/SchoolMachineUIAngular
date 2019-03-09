@@ -1,42 +1,42 @@
-<label>Student details:</label>
+<label>{{formTitle}}</label>
 <div class="well">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <label for="firstName" class="control-label">First name:</label>
         </div>
         <div class="col-md-7">
             <span name="firstName">
-            {{student?.firstName}}
+            {{formObject?.firstName}}
           </span>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <label for="middleName" class="control-label">Middle name:</label>
         </div>
         <div class="col-md-7">
             <span name="middleName">
-              {{student?.middleName}}
+              {{formObject?.middleName}}
             </span>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <label for="lastName" class="control-label">Last name:</label>
         </div>
         <div class="col-md-7">
             <span name="lastName">
-              {{student?.lastName}}
+              {{formObject?.lastName}}
             </span>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <label for="birthDate" class="control-label">Date of birth:</label>
         </div>
         <div class="col-md-7">
             <span name="birthDate">
-           {{student?.birthDate | date: 'MM/dd/yyyy'}}
+           {{formObject?.birthDate | date: 'MM/dd/yyyy'}}
           </span>
         </div>
     </div>

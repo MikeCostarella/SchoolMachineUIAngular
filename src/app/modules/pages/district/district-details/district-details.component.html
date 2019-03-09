@@ -1,3 +1,31 @@
-<p>
-  district-details works!
-</p>
+<label>{{formTitle}}</label>
+<div class="well">
+    <div class="row">
+        <div class="col-md-1">
+            <strong>Name:</strong>
+        </div>
+        <div class="col-md-3">
+            {{formObject?.name}}
+        </div>
+    </div>
+</div>
+<br>
+<label>Students:</label>
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let school of schools">
+                        <td>{{school.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

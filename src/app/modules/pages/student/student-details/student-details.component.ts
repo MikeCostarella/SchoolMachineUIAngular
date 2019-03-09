@@ -14,25 +14,26 @@ import { Student } from './../../../../_interfaces/student.model';
 })
 export class StudentDetailsComponent implements OnInit {
   public schools: School[];
-  public student: Student;
+  public formObject: Student;
   public errorMessage = '';
+  public formTitle = 'Student details:';
 
   constructor(private repository: RepositoryService, private router: Router,
               private activeRoute: ActivatedRoute, private errorHandler: ErrorHandlerService) { }
 
   ngOnInit() {
-    this.getStudentDetails();
+    this.getFocusObjectDetails();
   }
 
-  getStudentDetails() {
+  getFocusObjectDetails() {
     const id: string = this.activeRoute.snapshot.params.id;
-    const studentApiUrl = `api/student/GetStudentById?id=${id}`;
+    const focusObjectApiUrl = `api/student/GetStudentById?id=${id}`;
     const schoolsApiUrl = `api/student/GetSchoolsByStudentId?studentId=${id}`;
 
     // Get the student
-    this.repository.getData(studentApiUrl)
+    this.repository.getData(focusObjectApiUrl)
     .subscribe(res => {
-      this.student = res as Student;
+      this.formObject = res as Student;
       this.repository.getData(schoolsApiUrl)
       .subscribe(schoolsResponse => {
         this.schools = schoolsResponse as School[];

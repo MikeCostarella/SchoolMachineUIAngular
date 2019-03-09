@@ -13,26 +13,28 @@ import { Student } from './../../../../_interfaces/student.model';
   styleUrls: ['./school-details.component.css']
 })
 export class SchoolDetailsComponent implements OnInit {
-  public school: School;
+
+  public formObject: School;
   public students: Student[];
   public errorMessage = '';
+  public formTitle = 'School details:';
 
   constructor(private repository: RepositoryService, private router: Router,
               private activeRoute: ActivatedRoute, private errorHandler: ErrorHandlerService) { }
 
   ngOnInit() {
-    this.getSchoolDetails();
+    this.getFocusObjectDetails();
   }
 
-  getSchoolDetails() {
+  getFocusObjectDetails() {
     const id: string = this.activeRoute.snapshot.params.id;
-    const schoolApiUrl = `api/school/${id}`;
+    const focusObjectApiUrl = `api/school/${id}`;
     const studentsApiUrl = `api/school/GetStudentsBySchoolId?schoolId=${id}`;
 
     // Get the school
-    this.repository.getData(schoolApiUrl)
+    this.repository.getData(focusObjectApiUrl)
     .subscribe(res => {
-      this.school = res as School;
+      this.formObject = res as School;
       this.repository.getData(studentsApiUrl)
       .subscribe(studentsResponse => {
         this.students = studentsResponse as Student[];
