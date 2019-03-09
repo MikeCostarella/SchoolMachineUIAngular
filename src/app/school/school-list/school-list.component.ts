@@ -62,6 +62,11 @@ export class SchoolListComponent implements OnInit {
     this.applyFilter();
   }
 
+  public redirectToCreatePage() {
+    const createUrl = `/school/create/`;
+    this.router.navigate([createUrl]);
+  }
+
   public redirectToUpdatePage(row: any) {
     const updateUrl = `/school/update/${row.id}`;
     this.router.navigate([updateUrl]);

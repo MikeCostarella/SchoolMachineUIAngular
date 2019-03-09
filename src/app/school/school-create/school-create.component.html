@@ -1,9 +1,9 @@
 <div class="container-fluid">
+    <div>School</div>
     <form [formGroup]="schoolForm" autocomplete="off" novalidate (ngSubmit)="createSchool(schoolForm.value)">
         <div class="form-horizontal well">
-
             <div class="form-group">
-                <label for="name" class="control-label col-md-2">Name of the owner: </label>
+                <label for="name" class="control-label col-md-2">Name: </label>
                 <div class="col-md-5">
                     <input type="text" formControlName="name" id="name" class="form-control" />
                 </div>
