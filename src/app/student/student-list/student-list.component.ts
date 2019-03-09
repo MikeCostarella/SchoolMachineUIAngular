@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-
 import { ErrorHandlerService } from './../../shared/services/error-handler.service';
 import { RepositoryService } from './../../shared/services/repository.service';
-
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { Student } from './../../_interfaces/student.model';
 
 @Component({
@@ -12,6 +13,12 @@ import { Student } from './../../_interfaces/student.model';
   styleUrls: ['./student-list.component.css']
 })
 export class StudentListComponent implements OnInit {
+
+  public listData: MatTableDataSource<any>;
+  public displayedColumns: string[] = ['lastName', 'firstName', 'middleName', 'birthDate', 'actions'];
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  public searchKey: string;
   public students: Student[];
   public errorMessage = '';
 
@@ -21,11 +28,23 @@ export class StudentListComponent implements OnInit {
     this.getAllStudents();
   }
 
+  public applyFilter() {
+    this.listData.filter = this.searchKey.trim().toLowerCase();
+  }
+
   public getAllStudents() {
     const apiAddress = 'api/student';
     this.repository.getData(apiAddress)
     .subscribe(res => {
       this.students = res as Student[];
+      this.listData = new MatTableDataSource(this.students);
+      this.listData.sort = this.sort;
+      this.listData.paginator = this.paginator;
+      this.listData.filterPredicate = (data, filter) => {
+        return this.displayedColumns.some(ele => {
+          return ele !== 'actions' && data[ele].toLowerCase().indexOf(filter) !== -1;
+        });
+      };
     },
     (error) => {
       this.errorHandler.handleError(error);
@@ -33,18 +52,28 @@ export class StudentListComponent implements OnInit {
     });
   }
 
-  public getStudentSchools(id: string) {
-    const detailsUrl = `/student/details/${id}`;
+  public getStudentSchools(row: any) {
+    const detailsUrl = `/student/details/${row.id}`;
     this.router.navigate([detailsUrl]);
   }
 
-  public redirectToUpdatePage(id: string) {
-    const updateUrl = `/student/update/${id}`;
+  public onSearchClear() {
+    this.searchKey = '';
+    this.applyFilter();
+  }
+
+  public redirectToCreatePage() {
+    const createUrl = `/student/create/`;
+    this.router.navigate([createUrl]);
+  }
+
+  public redirectToUpdatePage(row: any) {
+    const updateUrl = `/student/update/${row.id}`;
     this.router.navigate([updateUrl]);
   }
 
-  public redirectToDeletePage(id: string) {
-    const deleteUrl = `/student/delete/${id}`;
+  public redirectToDeletePage(row: any) {
+    const deleteUrl = `/student/delete/${row.id}`;
     this.router.navigate([deleteUrl]);
   }
 

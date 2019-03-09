@@ -1,36 +1,55 @@
-<div class="row">
-    <div class="col-md-offset-10 col-md-2">
-        <a [routerLink]="['/student/create']">Create student</a>
-    </div>
+<div>Students</div>
+<div class="search-div">
+    <button mat-raised-button data-md-tooltip="create" (click)="redirectToCreatePage()">
+        <mat-icon>add</mat-icon>Create
+    </button>
+    <mat-form-field class="search-form-field" floatLabel="never">
+        <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" (click)="onSearchClear()">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
 </div>
-<br>
-<div class="row">
-    <div class="col-md-12">
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Middle Name</th>
-                        <th>Last Name</th>
-                        <th>Date of birth</th>
-                        <th>Update</th>
-                        <th>Delete</th>
-                        <th>Schools</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let student of students">
-                        <td>{{student.firstName}}</td>
-                        <td>{{student.middleName}}</td>
-                        <td>{{student.lastName}}</td>
-                        <td>{{student.birthDate | date: 'dd/MM/yyyy'}}</td>
-                        <td><button type="button" id="update" class="btn btn-success" (click)="redirectToUpdatePage(student.id)">Update</button></td>
-                        <td><button type="button" id="delete" class="btn btn-danger" (click)="redirectToDeletePage(student.id)">Delete</button></td>
-                        <td><button type="button" id="schools" class="btn btn-default" (click)="getStudentSchools(student.id)">Schools</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+<div class="mat-elevation-z8">
+    <mat-table [dataSource]="listData" matSort>
+        <ng-container matColumnDef="lastName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.lastName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="firstName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.firstName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="middleName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Middle Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.middleName}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="birthDate">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Date of birth</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.birthDate | date: 'dd/MM/yyyy'}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="actions">
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <button mat-icon-button data-md-tooltip="update" (click)="redirectToUpdatePage(row)"><mat-icon>update</mat-icon></button>
+                <button mat-icon-button color="warn" data-md-tooltip="delete" (click)="redirectToDeletePage(row)"><mat-icon>delete</mat-icon></button>
+                <button mat-icon-button data-md-tooltip="schools" (click)="getStudentSchools(row)"><mat-icon>schools</mat-icon></button>
+            </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="loading">
+            <mat-footer-cell *matFooterCellDef colspan="4">
+                Loading data...
+            </mat-footer-cell>
+        </ng-container>
+        <ng-container matColumnDef="noData">
+            <mat-footer-cell *matFooterCellDef colspan="4">
+                No data.
+            </mat-footer-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!=null}"></mat-footer-row>
+        <mat-footer-row *matFooterRowDef="['noData']" [ngClass]="{'hide':!(listData!=null && listData.data.length==0)}"></mat-footer-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
 </div>

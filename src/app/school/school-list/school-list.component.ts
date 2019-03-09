@@ -57,7 +57,7 @@ export class SchoolListComponent implements OnInit {
     this.router.navigate([schoolStudentsUrl]);
   }
 
-   public onSearchClear() {
+  public onSearchClear() {
     this.searchKey = '';
     this.applyFilter();
   }

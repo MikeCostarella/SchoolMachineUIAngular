@@ -1,10 +1,13 @@
-import { MatTableModule, MatIconModule, MatPaginatorModule, MatSortModule, MatInputModule } from '@angular/material';
-import { MatButtonModule } from '@angular/material';import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from '../shared/shared.module';
+import { MatTableModule, MatIconModule } from '@angular/material';
+import { MatPaginatorModule, MatSortModule, MatInputModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+
+import { SharedModule } from '../shared/shared.module';
 
 import { SchoolListComponent } from './school-list/school-list.component';
 import { SchoolDetailsComponent } from './school-details/school-details.component';
