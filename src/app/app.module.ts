@@ -19,6 +19,8 @@ import { MatInputModule, MatIconModule } from '@angular/material';
 import { MatPaginatorModule, MatTableModule } from '@angular/material';
 import { MatSortModule } from '@angular/material';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { LoginComponent } from './_components/login/login.component';
+import { RegisterComponent } from './_components/register/register.component';
 
 // ToDo: need to clean up angular material module reference and factor in to one new module.
 @NgModule({
@@ -29,6 +31,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     NotFoundComponent,
     InternalServerComponent,
     DataTableComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
