@@ -32,7 +32,7 @@ export class DistrictUpdateComponent implements OnInit {
   private executeFormObjectUpdate(formObjectValue) {
     this.formObject.name = formObjectValue.name;
 
-    const apiUrl = `api/district/${this.formObject.id}`;
+    const apiUrl = `api/district/UpdateDistrict?id=${this.formObject.id}`;
     this.repository.update(apiUrl, this.formObject)
       .subscribe(res => {
         $('#successModal').modal();
