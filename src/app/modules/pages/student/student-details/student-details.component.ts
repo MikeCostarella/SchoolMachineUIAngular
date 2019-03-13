@@ -27,7 +27,7 @@ export class StudentDetailsComponent implements OnInit {
 
   getFocusObjectDetails() {
     const id: string = this.activeRoute.snapshot.params.id;
-    const focusObjectApiUrl = `api/student/GetStudentById?id=${id}`;
+    const focusObjectApiUrl = `api/student/${id}`;
     const schoolsApiUrl = `api/student/GetSchoolsByStudentId?studentId=${id}`;
 
     // Get the student

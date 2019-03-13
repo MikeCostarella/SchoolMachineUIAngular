@@ -55,10 +55,9 @@ export class StudentUpdateComponent implements OnInit {
   }
 
   private getFocusObjectById() {
-    const studentId: string = this.activeRoute.snapshot.params.id;
-    const studentByIdUrl = `api/student/GetStudentById?id=${studentId}`;
-
-    this.repository.getData(studentByIdUrl)
+    const formObjectId: string = this.activeRoute.snapshot.params.id;
+    const formObjectByIdUrl = `api/student/${formObjectId}`;
+    this.repository.getData(formObjectByIdUrl)
       .subscribe(res => {
         this.formObject = res as Student;
         this.formGroup.patchValue(this.formObject);

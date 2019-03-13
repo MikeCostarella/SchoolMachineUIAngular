@@ -37,7 +37,7 @@ export class StudentDeleteComponent implements OnInit {
 
   private getFormObjectById() {
     const formObjectId: string = this.activeRoute.snapshot.params.id;
-    const formObjectByIdUrl = `api/student/GetStudentById?id=${formObjectId}`;
+    const formObjectByIdUrl = `api/student/${formObjectId}`;
     this.repository.getData(formObjectByIdUrl)
       .subscribe(res => {
         this.formObject = res as Student;
