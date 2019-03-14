@@ -17,11 +17,15 @@ import { InternalServerComponent } from './error-pages/internal-server/internal-
 import { ErrorHandlerService } from './_services/error-handler.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTableComponent } from './data-table/data-table.component';
+
+import { MaterialModule } from './modules/material/material.module';
+
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { MatInputModule, MatIconModule } from '@angular/material';
 import { MatPaginatorModule, MatTableModule } from '@angular/material';
 import { MatSortModule } from '@angular/material';
 import { MatTooltipModule } from '@angular/material/tooltip';
+
 import { LoginComponent } from './_components/login/login.component';
 import { RegisterComponent } from './_components/register/register.component';
 
@@ -40,6 +44,20 @@ import { RegisterComponent } from './_components/register/register.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MaterialModule,
+
+    MatButtonModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
+    MatTooltipModule,
+
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
@@ -51,18 +69,7 @@ import { RegisterComponent } from './_components/register/register.component';
       { path: '500', component: InternalServerComponent },
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: '**', redirectTo: '/404', pathMatch: 'full'}
-    ]),
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatIconModule,
-    MatInputModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatTableModule,
-    MatTooltipModule
+    ])
  ],
   providers: [
     EnvironmentUrlService,
