@@ -22,6 +22,7 @@ import { MaterialModule } from './modules/material/material.module';
 
 import { LoginComponent } from './_components/login/login.component';
 import { RegisterComponent } from './_components/register/register.component';
+import { LayoutComponent } from './_components/layout/layout.component';
 
 // ToDo: need to clean up angular material module reference and factor in to one new module.
 @NgModule({
@@ -34,6 +35,7 @@ import { RegisterComponent } from './_components/register/register.component';
     DataTableComponent,
     LoginComponent,
     RegisterComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
