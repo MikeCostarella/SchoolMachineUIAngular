@@ -2,11 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from './modules/material/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { EnvironmentUrlService } from './_services/environment-url.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RepositoryService } from './_services/repository.service';
 
-import { AlertComponent } from './_components/alert';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 
 import { AppComponent } from './app.component';
@@ -17,8 +18,6 @@ import { InternalServerComponent } from './error-pages/internal-server/internal-
 import { ErrorHandlerService } from './_services/error-handler.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataTableComponent } from './data-table/data-table.component';
-
-import { MaterialModule } from './modules/material/material.module';
 
 import { LoginComponent } from './_components/login/login.component';
 import { RegisterComponent } from './_components/register/register.component';
@@ -44,6 +43,7 @@ import { LayoutComponent } from './_components/layout/layout.component';
     BrowserAnimationsModule,
     FormsModule,
     MaterialModule,
+    FlexLayoutModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
