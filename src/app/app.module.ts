@@ -20,12 +20,6 @@ import { DataTableComponent } from './data-table/data-table.component';
 
 import { MaterialModule } from './modules/material/material.module';
 
-import { MatButtonModule, MatCheckboxModule } from '@angular/material';
-import { MatInputModule, MatIconModule } from '@angular/material';
-import { MatPaginatorModule, MatTableModule } from '@angular/material';
-import { MatSortModule } from '@angular/material';
-import { MatTooltipModule } from '@angular/material/tooltip';
-
 import { LoginComponent } from './_components/login/login.component';
 import { RegisterComponent } from './_components/register/register.component';
 
@@ -48,16 +42,6 @@ import { RegisterComponent } from './_components/register/register.component';
     BrowserAnimationsModule,
     FormsModule,
     MaterialModule,
-
-    MatButtonModule,
-    MatCheckboxModule,
-    MatIconModule,
-    MatInputModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatTableModule,
-    MatTooltipModule,
-
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
