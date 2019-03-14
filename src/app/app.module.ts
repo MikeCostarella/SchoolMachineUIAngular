@@ -3,8 +3,11 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EnvironmentUrlService } from './_services/environment-url.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RepositoryService } from './_services/repository.service';
+
+import { AlertComponent } from './_components/alert';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -39,6 +42,8 @@ import { RegisterComponent } from './_components/register/register.component';
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
       { path: 'district', loadChildren: './modules/pages/district/district.module#DistrictModule' },
       { path: 'school', loadChildren: './modules/pages/school/school.module#SchoolModule' },
       { path: 'student', loadChildren: './modules/pages/student/student.module#StudentModule' },
@@ -62,8 +67,10 @@ import { RegisterComponent } from './_components/register/register.component';
   providers: [
     EnvironmentUrlService,
     ErrorHandlerService,
-    RepositoryService
-  ],
+    RepositoryService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
