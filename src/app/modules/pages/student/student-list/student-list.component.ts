@@ -1,8 +1,8 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ErrorHandlerService } from './../../../../shared/services/error-handler.service';
-import { RepositoryService } from './../../../../shared/services/repository.service';
+import { ErrorHandlerService } from '../../../../_services/error-handler.service';
+import { RepositoryService } from '../../../../_services/repository.service';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Student } from './../../../../_interfaces/student.model';
