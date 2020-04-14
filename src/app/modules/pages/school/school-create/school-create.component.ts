@@ -36,7 +36,7 @@ export class SchoolCreateComponent implements OnInit {
       name: formGroupValue.name
     };
 
-    const apiUrl = 'api/school/CreateSchool';
+    const apiUrl = 'api/v1/school/CreateSchool';
     this.repository.create(apiUrl, school)
       .subscribe(res => {
         $('#successModal').modal();

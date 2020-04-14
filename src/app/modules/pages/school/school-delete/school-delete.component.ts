@@ -24,7 +24,7 @@ export class SchoolDeleteComponent implements OnInit {
   }
 
   public deleteFormObject() {
-    const deleteUrl = `api/school/${this.formObject.id}`;
+    const deleteUrl = `api/v1/school/${this.formObject.id}`;
     this.repository.delete(deleteUrl)
       .subscribe(res => {
         $('#successModal').modal();
@@ -37,7 +37,7 @@ export class SchoolDeleteComponent implements OnInit {
 
   private getFormObjectById() {
     const formObjectId: string = this.activeRoute.snapshot.params.id;
-    const formObjectByIdUrl = `api/school/${formObjectId}`;
+    const formObjectByIdUrl = `api/v1/school/${formObjectId}`;
     this.repository.getData(formObjectByIdUrl)
       .subscribe(res => {
         this.formObject = res as School;

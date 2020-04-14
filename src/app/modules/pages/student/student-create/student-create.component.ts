@@ -45,7 +45,7 @@ export class StudentCreateComponent implements OnInit {
       lastName: formGroupValue.lastName,
       birthDate: formGroupValue.birthDate
     };
-    const apiUrl = 'api/student/CreateStudent';
+    const apiUrl = 'api/v1/student/CreateStudent';
     this.repository.create(apiUrl, student)
       .subscribe(res => {
         $('#successModal').modal();

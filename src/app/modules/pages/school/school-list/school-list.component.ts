@@ -33,7 +33,7 @@ export class SchoolListComponent implements OnInit {
   }
 
   public getAllSchools() {
-    const apiAddress = 'api/school';
+    const apiAddress = 'api/v1/school';
     this.repository.getData(apiAddress)
     .subscribe(res => {
       this.schools = res as School[];

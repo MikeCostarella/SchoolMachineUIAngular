@@ -33,7 +33,7 @@ export class DistrictListComponent implements OnInit {
   }
 
   public getAllDistricts() {
-    const apiAddress = 'api/district';
+    const apiAddress = 'api/v1/district';
     this.repository.getData(apiAddress)
     .subscribe(res => {
       this.districts = res as District[];

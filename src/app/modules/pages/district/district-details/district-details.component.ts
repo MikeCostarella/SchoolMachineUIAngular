@@ -28,8 +28,8 @@ export class DistrictDetailsComponent implements OnInit {
 
   getFocusObjectDetails() {
     const id: string = this.activeRoute.snapshot.params.id;
-    const focusObjectApiUrl = `api/district/${id}`;
-    const schoolsApiUrl = `api/district/GetSchoolsByDistrictId?districtId=${id}`;
+    const focusObjectApiUrl = `api/v1/district/${id}`;
+    const schoolsApiUrl = `api/v1/district/GetSchoolsByDistrictId?districtId=${id}`;
 
     // Get the school
     this.repository.getData(focusObjectApiUrl)

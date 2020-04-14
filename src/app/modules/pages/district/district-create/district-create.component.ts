@@ -36,7 +36,7 @@ export class DistrictCreateComponent implements OnInit {
       name: formGroupValue.name
     };
 
-    const apiUrl = 'api/district/CreateDistrict';
+    const apiUrl = 'api/v1/district/CreateDistrict';
     this.repository.create(apiUrl, school)
       .subscribe(res => {
         $('#successModal').modal();

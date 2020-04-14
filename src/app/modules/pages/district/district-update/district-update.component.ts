@@ -32,7 +32,7 @@ export class DistrictUpdateComponent implements OnInit {
   private executeFormObjectUpdate(formObjectValue) {
     this.formObject.name = formObjectValue.name;
 
-    const apiUrl = `api/district/UpdateDistrict?id=${this.formObject.id}`;
+    const apiUrl = `api/v1/district/UpdateDistrict?id=${this.formObject.id}`;
     this.repository.update(apiUrl, this.formObject)
       .subscribe(res => {
         $('#successModal').modal();
@@ -46,7 +46,7 @@ export class DistrictUpdateComponent implements OnInit {
 
   private getFormObjectById() {
     const formObjectId: string = this.activeRoute.snapshot.params.id;
-    const formObjectByIdUrl = `api/district/${formObjectId}`;
+    const formObjectByIdUrl = `api/v1/district/${formObjectId}`;
     this.repository.getData(formObjectByIdUrl)
       .subscribe(res => {
         this.formObject = res as District;

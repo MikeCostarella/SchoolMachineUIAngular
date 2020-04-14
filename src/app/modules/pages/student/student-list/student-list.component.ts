@@ -33,7 +33,7 @@ export class StudentListComponent implements OnInit {
   }
 
   public getAllStudents() {
-    const apiAddress = 'api/student';
+    const apiAddress = 'api/v1/student';
     this.repository.getData(apiAddress)
     .subscribe(res => {
       this.students = res as Student[];

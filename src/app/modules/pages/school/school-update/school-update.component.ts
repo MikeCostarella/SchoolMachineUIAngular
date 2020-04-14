@@ -31,7 +31,7 @@ export class SchoolUpdateComponent implements OnInit {
   private executeFormObjectUpdate(formObjectValue) {
     this.formObject.name = formObjectValue.name;
 
-    const apiUrl = `api/school/UpdateSchool?id=${this.formObject.id}`;
+    const apiUrl = `api/v1/school/UpdateSchool?id=${this.formObject.id}`;
     this.repository.update(apiUrl, this.formObject)
       .subscribe(res => {
         $('#successModal').modal();
@@ -45,7 +45,7 @@ export class SchoolUpdateComponent implements OnInit {
 
   private getFormObjectById() {
     const formObjectId: string = this.activeRoute.snapshot.params.id;
-    const formObjectByIdUrl = `api/school/${formObjectId}`;
+    const formObjectByIdUrl = `api/v1/school/${formObjectId}`;
     this.repository.getData(formObjectByIdUrl)
       .subscribe(res => {
         this.formObject = res as School;

@@ -42,7 +42,7 @@ export class StudentUpdateComponent implements OnInit {
     this.formObject.lastName = formObjectValue.lastName;
     this.formObject.birthDate = formObjectValue.birthDate;
 
-    const apiUrl = `api/student/UpdateStudent?id=${this.formObject.id}`;
+    const apiUrl = `api/v1/student/UpdateStudent?id=${this.formObject.id}`;
     this.repository.update(apiUrl, this.formObject)
       .subscribe(res => {
         $('#successModal').modal();
